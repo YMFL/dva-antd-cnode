@@ -1,0 +1,16 @@
+
+html, body, :global(#root) {
+  height: 100%;
+}
+:global .ant-spin {
+  text-align: center;
+  /*width: 100%;*/
+  position: absolute;
+  top:20%;
+  left:50%;
+  margin-left: -52px;
+  /*transform: translate(-50%,-50%);*/
+}
+:global .ant-spin-dot {
+  margin: 16px auto;
+}
