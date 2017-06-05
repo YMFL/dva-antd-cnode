@@ -1,5 +1,5 @@
 import React from 'react';
-import {Spin, Alert} from 'antd';
+import {Spin, Alert,Card} from 'antd';
 import {connect} from 'dva';
 import styles from './App.css';
 import  isEmptyObject  from '../utils/utils'
@@ -9,12 +9,15 @@ function App({topics}) {
   const {
     data
   } = topics;
+  const item=data.map(function (item,index) {
+    return <Card key={index} title={item.title}>{item.title}</Card>
+  })
   return (
     <div className={styles.appContent}>
       <CnodeMenu />
       {!isEmptyObject(data) ?
         <div>
-          {}
+          {item}
         </div>
         :
         <Spin className='ant-spin' tip='正在玩命的加载中...'/>

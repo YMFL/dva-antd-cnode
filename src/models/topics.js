@@ -2,7 +2,7 @@ import * as Topics from '../services/topics';
 export default {
   namespace: 'topics',
   state: {
-    data: { },
+    data: [],
   },
   reducers: {
     save(state, action) {
@@ -27,7 +27,7 @@ export default {
       if (data.success === true) {
         yield put({
           type: 'save',
-          payload:{data: data,}
+          payload:{data: data.data}
         });
       }
     },
