@@ -13,6 +13,7 @@ const CnodeMenu = ({ dispatch, topics }) => {
         page: ' ',
         limit: ' ',
         mdrender: true,
+
       },
     });
   };
