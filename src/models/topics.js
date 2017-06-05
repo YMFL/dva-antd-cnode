@@ -3,12 +3,11 @@ export default {
   namespace: 'topics',
   state: {
     data: [],
+    item:'all',
+    loading:false
   },
   reducers: {
     save(state, action) {
-      console.log(action)
-      console.log(state)
-      console.log({...state, ...action.payload})
       return { ...state, ...action.payload};
     },
   },
@@ -22,12 +21,16 @@ export default {
     }
   },
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      const { data } = yield call(Topics.query);
+    *fetch({ payload:values }, { call, put }) {  // eslint-disable-line
+      yield put({
+        type: 'save',
+        payload:{item: values.tab,loading:true}
+      });
+      const {data}= yield call(Topics.query,values);
       if (data.success === true) {
         yield put({
           type: 'save',
-          payload:{data: data.data}
+          payload:{data: data.data,loading:false}
         });
       }
     },

@@ -1,19 +1,26 @@
 import React from 'react';
-import  { Menu, Icon } from 'antd';
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
-
-
-const CnodeMenu = () => {
-  const handleClick=(e)=>{
-    console.log(e)
-    localStorage.setItem('item',[e.key])
-  }
+import { connect } from 'dva';
+import { Menu, Icon } from 'antd';
+// const SubMenu = Menu.SubMenu;
+// const MenuItemGroup = Menu.ItemGroup;
+const CnodeMenu = ({ dispatch, topics }) => {
+  const { item } = topics;
+  const handleClick = (e) => {
+    dispatch({
+      type: 'topics/fetch',
+      payload: {
+        tab: e.key,
+        page: ' ',
+        limit: ' ',
+        mdrender: true,
+      },
+    });
+  };
   return (
     <Menu
       onClick={handleClick}
       mode="horizontal"
-      selectedKeys={[localStorage.getItem('item')]}
+      selectedKeys={[item ? item : 'all']}
       theme="dark"
     >
       <Menu.Item key="all" >
@@ -35,7 +42,10 @@ const CnodeMenu = () => {
   );
 };
 
-CnodeMenu .propTypes = {
-};
 
-export default CnodeMenu ;
+const mapStateToProps = (state) => {
+  const topics = state.topics;
+  return { topics };
+};
+// const mapDispatchToProps=
+export default connect(mapStateToProps)(CnodeMenu);

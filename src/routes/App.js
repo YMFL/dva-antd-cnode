@@ -7,20 +7,21 @@ import CnodeMenu  from '../components/CnodeMenu'
 
 function App({topics}) {
   const {
-    data
+    data,loading
   } = topics;
   const item=data.map(function (item,index) {
-    return <Card key={index} title={item.title}>{item.title}</Card>
+    return <Card className={styles.cardBox} key={index}><div><a href="https://www.facebook.com/">{item.title}</a></div></Card>
   })
   return (
     <div className={styles.appContent}>
       <CnodeMenu />
-      {!isEmptyObject(data) ?
+      {loading?
+        <Spin className='ant-spin' tip='正在玩命的加载中...'/>
+        :
         <div>
           {item}
         </div>
-        :
-        <Spin className='ant-spin' tip='正在玩命的加载中...'/>
+
       }
     </div>
 
