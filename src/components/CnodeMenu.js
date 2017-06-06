@@ -13,7 +13,6 @@ const CnodeMenu = ({ dispatch, topics }) => {
         page: ' ',
         limit: ' ',
         mdrender: true,
-
       },
     });
   };
@@ -22,7 +21,6 @@ const CnodeMenu = ({ dispatch, topics }) => {
       onClick={handleClick}
       mode="horizontal"
       selectedKeys={[item ? item : 'all']}
-      theme="dark"
     >
       <Menu.Item key="all" >
         <Icon type="appstore" />全部

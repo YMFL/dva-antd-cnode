@@ -2,15 +2,29 @@ import React from 'react';
 import {Spin, Alert,Card} from 'antd';
 import {connect} from 'dva';
 import styles from './App.css';
-import  isEmptyObject  from '../utils/utils'
-import CnodeMenu  from '../components/CnodeMenu'
+import CnodeMenu  from '../components/CnodeMenu';
 
 function App({topics}) {
   const {
     data,loading
   } = topics;
   const item=data.map(function (item,index) {
-    return <Card className={styles.cardBox} key={index}><div><a href="https://www.facebook.com/">{item.title}</a></div></Card>
+    return (
+    <div className={styles.cardBox} key={index}>
+      <div className={styles.cardAuthor}>
+        <a href="">
+          <img className={styles.cardImg} src={item.author.avatar_url} alt="item.author.loginname"/>
+        </a>
+      </div>
+      <div className={styles.cardItem}>
+        <a href="https://www.facebook.com/" className={styles.cardTitle}>{item.title}</a>
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
+    )
   })
   return (
     <div className={styles.appContent}>
@@ -21,14 +35,10 @@ function App({topics}) {
         <div>
           {item}
         </div>
-
       }
     </div>
-
   );
-
 }
-
 App.propTypes = {};
 const mapStateToProps = (state) => {
   const topics = state.topics;
