@@ -15,13 +15,6 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://jsonplaceholder.typicode.com/",
-      "changeOrigin": true,
-      "pathRewrite": { "^/api/v1" : "" }
-    }
-  },
-  "proxy": {
-    "/api": {
       "target": "https://cnodejs.org/",
       "changeOrigin": true
     }

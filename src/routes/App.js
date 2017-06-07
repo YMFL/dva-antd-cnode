@@ -3,6 +3,7 @@ import {Spin, Alert,Card} from 'antd';
 import {connect} from 'dva';
 import styles from './App.css';
 import CnodeMenu  from '../components/CnodeMenu';
+import { Link } from 'dva/router';
 
 function App({topics}) {
   const {
@@ -16,8 +17,8 @@ function App({topics}) {
           <img className={styles.cardImg} src={item.author.avatar_url} alt="item.author.loginname"/>
         </a>
       </div>
-      <div className={styles.cardItem}>
-        <a href="https://www.facebook.com/" className={styles.cardTitle}>{item.title}</a>
+      <div className={styles.content}>
+        <Link to="/details" className={styles.cardTitle}>{item.title}</Link>
       </div>
       <div>
       </div>
