@@ -14,7 +14,7 @@ function RouterConfig({ history }) {
         <IndexRoute component={App} />
         <Route path="/users" component={Users} />
         <Route path="/app" component={App} />
-        <Route path="/details" component={Details} />
+        <Route path="/topic/:id" component={Details} />
         <Route path="/login" component={Login} />
         <Route path="/*" component={App} />
       </Route>

@@ -5,7 +5,7 @@ import styles from './App.css';
 import CnodeMenu  from '../components/CnodeMenu';
 import { Link } from 'dva/router';
 
-function App({topics}) {
+function App({dispatch,topics,details}) {
   const {
     data,loading
   } = topics;
@@ -18,7 +18,7 @@ function App({topics}) {
         </a>
       </div>
       <div className={styles.content}>
-        <Link to="/details" className={styles.cardTitle}>{item.title}</Link>
+        <Link to={`/topic/${item.id}`} className={styles.cardTitle}>{item.title}</Link>
       </div>
       <div>
       </div>
