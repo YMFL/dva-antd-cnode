@@ -11,21 +11,23 @@ function App({dispatch,topics,details}) {
   } = topics;
   const item=data.map(function (item,index) {
     return (
-    <div className={styles.cardBox} key={index}>
-      <div className={styles.cardAuthor}>
-        <a href="">
-          <img className={styles.cardImg} src={item.author.avatar_url} alt="item.author.loginname"/>
-        </a>
+      <div className={styles.cardBox} key={index}>
+        <div className={styles.cardAuthor}>
+          <a href="">
+            <img className={styles.cardImg} src={item.author.avatar_url} alt="item.author.loginname"/>
+          </a>
+        </div>
+        <div className={styles.content}>
+          <Link to={`/topic/${item.id}`} className={styles.cardTitle}>
+            <div className={styles.title}>{item.title}</div>
+          </Link>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
       </div>
-      <div className={styles.content}>
-        <Link to={`/topic/${item.id}`} className={styles.cardTitle}><div className={styles.title}>{item.title}</div></Link>
-      </div>
-      <div>
-      </div>
-      <div>
-      </div>
-    </div>
-    )
+    );
   })
   return (
     <div className={styles.appContent}>

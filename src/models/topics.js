@@ -1,4 +1,5 @@
 import * as Topics from '../services/topics';
+import isEmptyObject from '../utils/utils';
 export default {
   namespace: 'topics',
   state: {
@@ -21,17 +22,35 @@ export default {
     }
   },
   effects: {
-    *fetch({ payload:values }, { call, put }) {  // eslint-disable-line
-      yield put({
-        type: 'save',
-        payload:{item: values.tab,loading:true}
-      });
-      const {data}= yield call(Topics.query,values);
-      if (data.success === true) {
+    *fetch({ payload:values }, { call, put,select }) {  // eslint-disable-line
+      const state = yield select(state => state);
+      if(values.tab){
         yield put({
           type: 'save',
-          payload:{data: data.data,loading:false}
+          payload:{item: values.tab,loading:true}
         });
+        const {data}= yield call(Topics.query,values);
+        if (data.success === true) {
+          yield put({
+            type: 'save',
+            payload:{data: data.data,loading:false}
+          });
+        }
+      }else {
+        if(isEmptyObject(state.topics.data)){
+          const {data}= yield call(Topics.query,values);
+          if (data.success === true) {
+            yield put({
+              type: 'save',
+              payload:{data: data.data,loading:false}
+            });
+          }
+        }else{
+          yield put({
+            type: 'save',
+            payload:{loading:false}
+          });
+        }
       }
     },
   }

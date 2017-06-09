@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import {Spin} from 'antd';
 import styles from './Details.css';
 import DetailsHead from '../components/DetailsHead'
+import DetailsComment from '../components/DetailsComment'
 
 function Details({details}) {
   const {loading,data} =details;
@@ -15,7 +16,9 @@ function Details({details}) {
           :
           <div>
             <DetailsHead {...data} />
+            <div className={styles.title}>{data.title}</div>
             <div className={styles.content} dangerouslySetInnerHTML={{__html:data.content}} />
+            <DetailsComment {...data}/>
           </div>
         }
       </div>
