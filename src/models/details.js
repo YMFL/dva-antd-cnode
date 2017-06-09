@@ -5,7 +5,6 @@ export default {
     data:{},
     loading:false
   },
-
   subscriptions: {
     setup({ dispatch, history}) {
       return history.listen(({pathname, query}) => {
@@ -15,7 +14,6 @@ export default {
       });
     }
   },
-
   effects: {
     *fetch({ payload:values}, { call, put }) {  // eslint-disable-line
       yield put({
@@ -31,11 +29,9 @@ export default {
       }
     },
   },
-
   reducers: {
     save(state, action) {
       return { ...state, ...action.payload };
     },
   },
-
 };

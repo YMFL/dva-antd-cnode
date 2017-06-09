@@ -2,18 +2,21 @@ import React from 'react';
 import { connect } from 'dva';
 import {Spin} from 'antd';
 import styles from './Details.css';
+import DetailsHead from '../components/DetailsHead'
 
 function Details({details}) {
   const {loading,data} =details;
-  console.log(details)
-  // console.log(content)
+  document.title=data.title;
   return (
     <div className={styles.normal}>
       <div>
         {loading?
           <Spin className='ant-spin' tip='正在玩命的加载中...'/>
           :
-          <div dangerouslySetInnerHTML={{__html:data.content}} />
+          <div>
+            <DetailsHead {...data} />
+            <div className={styles.content} dangerouslySetInnerHTML={{__html:data.content}} />
+          </div>
         }
       </div>
     </div>

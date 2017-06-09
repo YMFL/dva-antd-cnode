@@ -18,7 +18,7 @@ function App({dispatch,topics,details}) {
         </a>
       </div>
       <div className={styles.content}>
-        <Link to={`/topic/${item.id}`} className={styles.cardTitle}>{item.title}</Link>
+        <Link to={`/topic/${item.id}`} className={styles.cardTitle}><div className={styles.title}>{item.title}</div></Link>
       </div>
       <div>
       </div>

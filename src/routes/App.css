@@ -25,6 +25,9 @@
 .cardAuthor{
   margin: 0 20px 0 10px;
 }
-.cardTitle{
-
+.title{
+  width: 283px;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
 }
