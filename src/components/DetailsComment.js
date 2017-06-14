@@ -5,7 +5,7 @@ const DetailsComment = (data) => {
   const {replies, author} = data;
   const item = replies.map(function (item, index) {
     return (
-      <div className={styles.item}>
+      <div className={styles.item} key={index}>
         <div className={styles.head}>
           {/*<div className={styles.author}>*/}
             <img src={item.author.avatar_url} alt={item.author.loginname}/>
